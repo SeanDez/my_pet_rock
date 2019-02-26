@@ -25,7 +25,6 @@ const styles = theme => ({
     width : '40px'
   },
   searchButton : {
-    width : '40px',
     position : 'absolute',
     left : '-8px',
     bottom : '-8px'
@@ -68,7 +67,7 @@ const TopNav = (props) => {
             <FaBars size='1.5rem' />
           </IconButton>
           <SearchInputContainer>
-            <IconButton className={ classes.searchButton }>
+            <IconButton className={ [classes.menuButton, classes.searchButton].join(" ") }>
               <FaSearch size='1.5rem' />
             </IconButton>
             <Input className={ classes.search } placeholder='product search'
