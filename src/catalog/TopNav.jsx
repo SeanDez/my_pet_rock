@@ -26,14 +26,13 @@ const styles = theme => ({
   },
   searchButton : {
     position : 'absolute',
-    left : '-8px',
+    right : '0px',
     bottom : '-8px'
   },
   search : {
     // borderBottom : '1px solid darkblue',
     fontStyle : 'italic',
     lineHeight : 0,
-    position : 'relative',
     paddingLeft : '25px',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
