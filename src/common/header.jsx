@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
-
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-flow: row wrap;
   border: 1px dotted black;
+  align-content: space-around;
+  height: 120px;
 `;
 
 const LogoBox = styled.div`
@@ -18,8 +19,9 @@ const LogoBox = styled.div`
 
 const SaleBox = styled.div`
   height : 60px;
-  width : 200px;
+  width : 100px;
   background-color : darkslateblue;
+  flex-basis: 200px;
 `;
 
 
