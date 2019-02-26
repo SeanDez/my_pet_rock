@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-
+import BreadCrumbTrail from "./BreadCrumbTrail";
 
 class Catalog extends Component {
   
   render() {
     return (
       <React.Fragment>
-        Catalog
+        <BreadCrumbTrail />
+        <p>Catalog</p>
       </React.Fragment>
     )
   }
