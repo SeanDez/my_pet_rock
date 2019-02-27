@@ -6,7 +6,10 @@ const Container = styled.div`
   padding: 0.5vh 6vw;
   display : flex;
   justify-content: flex-start;
-  border: 1px dashed purple;
+  align-items: flex-start;
+  border-bottom: 1px solid lightgray;
+  min-width: 100%;
+  align-self: flex-start;
 `;
 
 

@@ -9,6 +9,7 @@ const HeaderContainer = styled.div`
   border: 1px dotted black;
   align-content: space-around;
   height: 120px;
+  width: 100%;
 `;
 
 const LogoBox = styled.div`
