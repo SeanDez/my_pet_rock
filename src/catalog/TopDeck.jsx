@@ -16,12 +16,12 @@ const ProductName = styled.h2`
 
 const SelectedImageContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
+  margin: 0 auto;
   max-width: 90%;
-  max-height: 400px;
   //maxHeight: auto;
-  border : 1px dotted deeppink;
+  border : 2px dotted deeppink;
 `;
 
 
@@ -38,19 +38,20 @@ const images = [
 export default props => {
   
   return (
-    <React.Fragment>
+    <div style={{ border : '3px dashed orange' }} >
       <BrandName>DragonStone Trading Company</BrandName>
       <ProductName>Pure DragonGlass, forged from 100% Authentic Dragon Fire</ProductName>
       <SelectedImageContainer style={{ marginTop : '4vh' }}>
         <img src={require('../images/dragonglass_pendant.jpg')} alt='dragonglass pendant'
              style={{
-                maxWidth : '100%',
-                height : 'auto',
-             // maxHeight : '100%',
-                objectFit : "contain",
+               maxWidth : '100%',
+               height : 'auto',
+               margin : '0 auto',
+            // maxHeight : '100%',
+               objectFit : "contain",
         }} />
       </SelectedImageContainer>
       <ImageThumbnails images={images} />
-    </React.Fragment>
+    </div>
   )
 }
