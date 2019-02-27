@@ -51,18 +51,19 @@ const options = {
 };
 
 const OptionContainer = styled.div`
-  margin: 0.7vh auto;
+  margin: -1vh auto;
   padding: 0.7vh auto;
   min-width: 250px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   border: 2px dashed mediumpurple;
-  align-content: space-around;
+  align-content: center;
 `;
 
 const EnhancedButton = styled(Button)`
   min-width: 110px !important;
+  margin: 1vh !important;
 `;
 
 
