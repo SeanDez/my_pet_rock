@@ -13,6 +13,7 @@ const ThumbNail = styled.img`
     border: 1px solid lightgrey;
     border-radius: 3%;
     width: 40vw;
+    max-width: 185px;
     height: 15vh;
     object-fit: contain;
 `;

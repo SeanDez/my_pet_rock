@@ -3,23 +3,31 @@ import styled from "styled-components";
 
 import ImageThumbnails from "./ImageThumbnails";
 
+
+const OuterContainer = styled.div`
+  border : 3px dashed orange;
+  max-width: 700px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+`;
+
 const BrandName = styled.h3`
   color : slategray;
-  text-align: center;
   font-weight: 400;
+  max-width: 560px;
 `;
 
 const ProductName = styled.h2`
-  text-align: center;
   font-weight: 400;
+  max-width: 560px;
+  margin: 0;
 `;
 
 const SelectedImageContainer = styled.div`
   display: flex;
-  //justify-content: center;
-  //align-items: center;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 300px;
   //maxHeight: auto;
   border : 2px dotted deeppink;
 `;
@@ -38,7 +46,7 @@ const images = [
 export default props => {
   
   return (
-    <div style={{ border : '3px dashed orange' }} >
+    <OuterContainer>
       <BrandName>DragonStone Trading Company</BrandName>
       <ProductName>Pure DragonGlass, forged from 100% Authentic Dragon Fire</ProductName>
       <SelectedImageContainer style={{ marginTop : '4vh' }}>
@@ -47,11 +55,10 @@ export default props => {
                maxWidth : '100%',
                height : 'auto',
                margin : '0 auto',
-            // maxHeight : '100%',
                objectFit : "contain",
         }} />
       </SelectedImageContainer>
       <ImageThumbnails images={images} />
-    </div>
+    </OuterContainer>
   )
 }

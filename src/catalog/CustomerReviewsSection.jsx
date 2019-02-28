@@ -5,6 +5,8 @@ const OuterContainer = styled.div`
   border : 1px solid #999;
   border-radius: 3%;
   padding: 1vh 1vw;
+  width: 560px;
+  max-width: 700px;
 `;
 
 export default props => {

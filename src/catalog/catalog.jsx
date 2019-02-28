@@ -18,10 +18,12 @@ import FooterCopyright from "./FooterCopyright";
 const ShortDescription = styled.p`
   font-size: 1rem;
   color: #282c34;
+  max-width: 700px;
 `;
 
 const JumboBuyButton = styled(Button)`
-  padding: 3vh 20vw !important;
+  //padding: 3vh 20vw !important;
+  max-width: 400px !important;
   font-size: 1.2rem !important;
   text-transform: none !important;
 `;
