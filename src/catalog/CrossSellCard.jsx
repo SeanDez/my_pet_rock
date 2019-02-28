@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-const mainImage = require('../images/placeholder-200x200.jpg');
+const mainImage = require('./images/placeholder-200x200.jpg');
 const todayPrice = 39.99;
 const scratchedOutPrice = 100;
 
@@ -34,8 +34,8 @@ export default props => {
   return (
     <React.Fragment>
       { // replace with a real array of cross sells
-        [null, null].map(nothing => (
-          <OuterContainer>
+        [null, null].map((nothing, index) => (
+          <OuterContainer key={index}>
             <img src={mainImage} style={{
               minWidth : '10vw',
               minHeight : 'auto',
@@ -49,6 +49,7 @@ export default props => {
               <PriceText>$39.99</PriceText>
               <ScratchedOutPriceText>$100</ScratchedOutPriceText>
             </div>
+            <p style={{ fontSize : '.9rem', textDecoration : 'none', marginTop : '-1vh' }}><a href='#'>View</a></p>
           </OuterContainer>
         ))
       }

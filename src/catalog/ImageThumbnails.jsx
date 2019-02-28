@@ -26,9 +26,9 @@ export default props => {
       <ThumbNailContainer>
         { // THUMBNAILs
           props.images.map((imageSrc, index) => (
-            <a href="#">
+            <a href="#" key={ index }
+            >
               <ThumbNail
-                key={ index }
                 src={ imageSrc }
               />
             </a>

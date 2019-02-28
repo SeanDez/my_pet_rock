@@ -10,7 +10,10 @@ import ShippingSection from './ShippingSection';
 import FeatureSection from "./FeatureSection";
 import LongDescriptionSection from "./LongDescriptionSection";
 import CustomerReviewsSection from "./CustomerReviewsSection";
-import CrossSellSection from './CrossSellSection'
+import CrossSellSection from './CrossSellSection';
+import FooterBenefitsSection from "./FooterBenefitsSection";
+import FooterLinkSection from "./FooterLinkSection";
+import FooterCopyright from "./FooterCopyright";
 
 const ShortDescription = styled.p`
   font-size: 1rem;
@@ -49,6 +52,9 @@ class Catalog extends Component {
         <LongDescriptionSection />
         <CustomerReviewsSection style={{ marginTop : '20vh !important' }} />
         <CrossSellSection />
+        <FooterBenefitsSection />
+        <FooterLinkSection />
+        <FooterCopyright style={{ border: '2px dashed red', marginTop : '10vh' }} />
       </React.Fragment>
     )
   }
