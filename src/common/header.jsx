@@ -5,24 +5,30 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   border: 1px dotted black;
   align-content: space-around;
-  height: 120px;
+  height: 65px;
   width: 100%;
+  border: 2px dashed maroon;
 `;
 
 const LogoBox = styled.div`
   height : 45px;
   width : 100px;
+  min-height: auto;
+  min-width: 10vw;
   background-color : lightgreen;
+  border: 2px dashed teal;
 `;
 
 const SaleBox = styled.div`
   height : 60px;
-  width : 100px;
+  width : 150px;
+  min-height: auto;
+  min-width: 10vw;
   background-color : darkslateblue;
-  flex-basis: 200px;
+  border: 2px dashed orange;
 `;
 
 

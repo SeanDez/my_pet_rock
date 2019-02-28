@@ -64,6 +64,7 @@ const OptionContainer = styled.div`
 const EnhancedButton = styled(Button)`
   min-width: 110px !important;
   margin: 1vh !important;
+  text-transform: none !important;
 `;
 
 
