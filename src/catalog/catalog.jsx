@@ -10,9 +10,9 @@ import FeatureSection from "./FeatureSection";
 import LongDescriptionSection from "./LongDescriptionSection";
 import CustomerReviewsSection from "./CustomerReviewsSection";
 import CrossSellSection from './CrossSellSection';
-import FooterBenefitsSection from "./FooterBenefitsSection";
-import FooterLinkSection from "./FooterLinkSection";
-import FooterCopyright from "./FooterCopyright";
+import FooterBenefitsSection from "../common/FooterBenefitsSection";
+import FooterLinkSection from "../common/FooterLinkSection";
+import FooterCopyright from "../common/FooterCopyright";
 
 
 

@@ -2,19 +2,18 @@ import React from 'react';
 import styled from "styled-components";
 
 const Container = styled.div`
-  //text-align: left;
-  padding: 0.5vh 6vw;
+  margin: 5px 0 5px 15px;
   display : flex;
   justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid lightgray;
-  min-width: 100%;
+  width: calc(100% - 20px);
   align-self: flex-start;
 `;
 
 
 const StyledSeparator = styled.div`
-  font-size: .7rem;
+  font-size: .8rem;
   margin-right: 2vw;
 `;
 
@@ -28,7 +27,7 @@ export default (props) => {
   return (
     <React.Fragment>
       <Container>
-        <StyledSeparator>>></StyledSeparator>
+        <StyledSeparator>></StyledSeparator>
         <StyledLink href='#'>Quartz Rocks</StyledLink>
       </Container>
     </React.Fragment>

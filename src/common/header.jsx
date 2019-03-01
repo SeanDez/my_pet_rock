@@ -11,6 +11,10 @@ const HeaderContainer = styled.div`
   height: 65px;
   width: 100%;
   border: 2px dashed maroon;
+  
+  @media (min-width: 600px) {
+    justify-content: space-between;
+  }
 `;
 
 const LogoBox = styled.div`
