@@ -54,6 +54,7 @@ const OptionContainer = styled.div`
   margin: -1vh auto;
   padding: 0.7vh auto;
   min-width: 250px;
+  max-width: 400px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -74,8 +75,8 @@ const EnhancedButton = styled(Button)`
 export default props => {
   
   return (
-    <React.Fragment>
-      <p>Options</p>
+    <div style={{ marginTop : '30px' }}>
+      <h2 style={{ fontWeight : 400 }}>Options</h2>
       <h3>Edition</h3>
       <OptionContainer>
         <EnhancedButton color='primary' variant='outlined'>Standard</EnhancedButton>
@@ -88,6 +89,6 @@ export default props => {
         <EnhancedButton color='primary' variant='outlined'>Medium</EnhancedButton>
         <EnhancedButton color='primary' variant='outlined'>Large</EnhancedButton>
       </OptionContainer>
-    </React.Fragment>
+    </div>
   );
 }

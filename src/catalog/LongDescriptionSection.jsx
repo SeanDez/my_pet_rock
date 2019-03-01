@@ -10,7 +10,7 @@ export default props => {
   
   return (
     <React.Fragment>
-      <h4>Description</h4>
+      <h2 style={{ fontWeight : 400 }}>Description</h2>
       <StyledParagraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at ducimus eligendi eum fugit impedit in
          itaque, labore libero necessitatibus optio porro possimus quis quisquam, rerum saepe suscipit temporibus
          voluptates.

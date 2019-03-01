@@ -9,7 +9,7 @@ export default props => {
   
   return (
     <React.Fragment>
-      <h4>Features</h4>
+      <h2 style={{ fontWeight : 400 }}>Features</h2>
       <ul>
         <StyledLi>Metal outer covering and neckpiece</StyledLi>
         <StyledLi>Quick pop-out withdrawal mechanism for emergency threats</StyledLi>
