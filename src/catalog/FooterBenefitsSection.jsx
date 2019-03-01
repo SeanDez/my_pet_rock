@@ -6,9 +6,10 @@ import {FaBox, FaHeadset, FaInstagram} from "react-icons/fa";
 const OuterContainer = styled.div`
   //margin: 5vh 0;
   display: flex;
-  && { flex-flow : row wrap; }
+  flex-flow : row wrap !important;
   justify-content: space-around;
-  max-width: 700px;
+  border: 2px dashed springgreen;
+  //max-width: 700px;
 `;
 
 const iconStyle = {
@@ -16,7 +17,7 @@ const iconStyle = {
   height : 'auto',
   minWidth : '20px',
   color : '#555',
-  alignSelf : 'center'
+  // border : '2px solid orange'
 };
 
 
@@ -36,13 +37,12 @@ const cardData = [
 
 export default props => {
   return (
-    <div>
+    <React.Fragment>
       <OuterContainer>
         <FooterBenefitsCard
           cardData={cardData}
         />
-        <p>Test</p>
       </OuterContainer>
-    </div>
+    </React.Fragment>
   )
 }

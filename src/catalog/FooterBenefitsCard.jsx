@@ -6,6 +6,9 @@ const OuterContainer = styled.div`
   display: flex;
   flex-flow : column nowrap;
   justify-content: space-around;
+  align-items: center;
+  border : 2px dashed deeppink;
+  max-width: 300px;
 `;
 
 
@@ -16,7 +19,7 @@ const paragraphStyle = {
   color : '#222',
   fontSize : '0.80rem',
   maxWidth : '360px',
-  margin : '1vh 20vw 3vh 20vw'
+  // border : '2px dashed gray'
 };
 
 // put them all in containers. Then the underlying component doesn't have to be touched
@@ -27,7 +30,7 @@ const paragraphStyle = {
 
 export default props => {
   return (
-    <div>
+    <React.Fragment>
       {
         props.cardData.map((dataObject, index) => (
           <OuterContainer key={index}>
@@ -38,6 +41,6 @@ export default props => {
           </OuterContainer>
         ))
       }
-    </div>
+    </React.Fragment>
   );
 }
