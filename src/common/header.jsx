@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   flex-flow: row nowrap;
   border: 1px dotted black;
@@ -12,9 +12,9 @@ const HeaderContainer = styled.div`
   width: 100%;
   border: 2px dashed maroon;
   
-  @media (min-width: 600px) {
-    justify-content: space-between;
-  }
+  //@media (min-width: 600px) {
+  //  justify-content: space-evenly;
+  //}
 `;
 
 const LogoBox = styled.div`

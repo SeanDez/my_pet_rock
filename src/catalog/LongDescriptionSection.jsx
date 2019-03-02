@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledParagraph = styled.p`
-  margin: 4vh 3vw;
+  margin: 0 3vw 1vh 0;
   max-width: 700px;
 `;
 

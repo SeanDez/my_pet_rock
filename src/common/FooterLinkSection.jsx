@@ -45,15 +45,15 @@ const linkStyle = {
 };
 
 export default props => (
-  <OuterContainer>
+  <OuterContainer style={props.catalogStyles}>
     {
-      linkData.map(object => (
-        <LinkGroupContainer>
+      linkData.map((object, index) => (
+        <LinkGroupContainer key={index}>
           <h4>{object.header}</h4>
           {
-            object.links.map(linkObject => (
-              <React.Fragment>
-                <p style={paragraphStyle}>
+            object.links.map((linkObject, index) => (
+              <React.Fragment key={index}>
+                <p style={paragraphStyle} key={index} >
                   <a href={linkObject.url}
                      style={linkStyle}
                   >

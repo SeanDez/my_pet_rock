@@ -37,12 +37,10 @@ const cardData = [
 
 export default props => {
   return (
-    <React.Fragment>
-      <OuterContainer>
+      <OuterContainer style={props.catalogStyles}>
         <FooterBenefitsCard
           cardData={cardData}
         />
       </OuterContainer>
-    </React.Fragment>
   )
 }
