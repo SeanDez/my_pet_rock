@@ -28,13 +28,19 @@ class Catalog extends Component {
           <TopDeck />
           <RegistrySection />
           <ShippingSection />
-          <FeatureSection catalogStyles={{ marginTop : '20px' }}/>
+          <FeatureSection
+            catalogStyles={{ marginTop : '20px' }}/>
           <LongDescriptionSection />
-          <CustomerReviewsSection catalogStyles={{ marginTop : '50px' }} />
-          <CrossSellSection catalogStyles={{ marginTop : '20px' }} />
-          <FooterBenefitsSection catalogStyles={{ marginTop : '20px' }} />
-          <FooterLinkSection catalogStyles={{ marginTop : '60px' }} />
-          <FooterCopyright style={ {border : "2px dashed red", marginTop : "10vh"} } />
+          <CustomerReviewsSection
+            catalogStyles={{ marginTop : '50px' }} />
+          <CrossSellSection
+            catalogStyles={{ marginTop : '20px' }} />
+          <FooterBenefitsSection
+            catalogStyles={{ marginTop : '20px' }} />
+          <FooterLinkSection
+            catalogStyles={{ marginTop : '60px' }} />
+          <FooterCopyright
+            style={ {border : "2px dashed red", marginTop : "10vh"} } />
       </React.Fragment>
     );
   }
