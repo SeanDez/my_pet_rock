@@ -1,6 +1,6 @@
 import React from "react";
 import {FaBars, FaShoppingCart, FaSearch} from "react-icons/fa";
-import {MenuList, MenuItem, MenuButton, Dropdown, SubMenuItem} from "react-menu-list";
+import {MenuList, MenuButton, Dropdown, SubMenuItem} from "react-menu-list";
 
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
@@ -8,8 +8,8 @@ import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
+import Collapse from "@material-ui/core/Collapse";
 
 import {withStyles} from '@material-ui/core/styles';
 import styled from "styled-components";
@@ -62,20 +62,72 @@ const SearchInputContainer = styled.div`
   position : relative;
 `;
 
-
-
+const StyledSubMenuItem = styled(SubMenuItem)`
+  height: 24px;
+  boxSizing: content-box;
+  width: auto;
+  overflow: hidden;
+  whiteSpace: nowrap;
+  // &$selected: {}
+`;
 
 
 class TopNav extends React.Component {
   state = {
-    collapseIsOpen : false
+    catalogCollapseIsOpen : false,
+    windowWidth : null
   };
   
-  flipCollapsingMenu = () => {
+
+  setMenuAnchor = event => {
+    this.setState({ menuAnchor : event.currentTarget })
+  };
+  
+  removeMenuAnchor = () => {
+    this.setState({ menuAnchor : null })
+  };
+  
+  
+  // componentDidMount() {
+  //   this.updatePredicate();
+  //   window.addEventListener("resize", this.updatePredicate);
+  // }
+  //
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updatePredicate);
+  // }
+  //
+  // updatePredicate() {
+  //   this.setState({ isDesktop: window.innerWidth > 1450 });
+  // }
+  
+  selectWidthSetting = () => {
     this.setState({
-      collapseIsOpen : !this.state.collapseIsOpen
+      windowWidth : window.innerWidth > 600 ? 'small' : 'expanded'
     })
   };
+  
+  componentDidMount() {
+    this.selectWidthSetting();
+    // update it every time there's a change on the resize event
+    // arg 2 is a listener, a callback that receives the event object
+    window.addEventListener('resize', this.selectWidthSetting)
+  }
+  
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState !== this.state) {
+      console.log(this.state, `=====this.state=====`);
+    }
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.selectWidthSetting)
+  }
+  
+
+  
+  
+  
   
   render() {
     const {classes} = this.props;
@@ -86,12 +138,34 @@ class TopNav extends React.Component {
           <OuterContainer>
             <IconButton
               className={ classes.menuButton }
-              onClick={ this.flipCollapsingMenu }
+              onClick={ this.setMenuAnchor }
             >
               <FaBars size='1.5rem' />
             </IconButton>
             
-          
+          <Menu
+            anchorEl={this.state.menuAnchor}
+            open={Boolean(this.state.menuAnchor)} // true / false
+            // onClick={this.removeMenuAnchor}
+          >
+            <MenuItem onClick={this.removeMenuAnchor}>Home</MenuItem>
+            <MenuItem
+              onClick={() => {
+              this.setState({
+                catalogCollapseIsOpen : !this.state.catalogCollapseIsOpen
+              });
+            }}>
+              <p>Browse Catalog</p>
+            </MenuItem>
+            <Collapse in={this.state.catalogCollapseIsOpen}>
+              <MenuItem>1</MenuItem>
+            </Collapse>
+            <MenuItem onClick={this.removeMenuAnchor}>Shopping Cart</MenuItem>
+            <MenuItem onClick={this.removeMenuAnchor}>Registry</MenuItem>
+            <MenuItem onClick={this.removeMenuAnchor}>Sign In</MenuItem>
+          </Menu>
+            
+            
             <SearchInputContainer>
               <IconButton className={ [classes.menuButton, classes.searchButton].join(" ") }>
                 <FaSearch size='1.5rem' />
