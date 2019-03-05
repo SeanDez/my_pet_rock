@@ -35,7 +35,7 @@ const styles = theme => ({
     // borderBottom : '1px solid darkblue',
     fontStyle : 'italic',
     lineHeight : 0,
-    paddingLeft : '25px',
+    paddingLeft : '2vw',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
@@ -48,6 +48,9 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit,
   },
+  subMenu1 : {
+    paddingLeft : '10px'
+  }
 });
 
 const OuterContainer = styled.div`
@@ -72,9 +75,44 @@ const StyledSubMenuItem = styled(SubMenuItem)`
 `;
 
 
+const MobileMenuContainer = styled.div`
+  @media (min-width : 418px) {
+    display: none;
+  }
+`;
+
+const ExpandedMenuContainer = styled.div`
+  display: none;
+  @media (min-width: 418px) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px dashed wheat;
+    min-width: 200px;
+    margin: 0 5px;
+  }
+`;
+
+const StyledMenuButton = styled(MenuButton)`
+  background-color: transparent;
+  //border: transparent;
+  border: 2px dashed lightgray;
+  color: white;
+  font-size: 1rem;
+  letter-spacing: .03rem;
+  padding: 0;
+`;
+
+const StyledMenuItem = styled.p`
+    margin: 0 5px;
+`;
+
+
 class TopNav extends React.Component {
   state = {
     catalogCollapseIsOpen : false,
+    rocksCollapseIsOpen : false,
     windowWidth : null
   };
   
@@ -136,36 +174,72 @@ class TopNav extends React.Component {
       <React.Fragment>
         <AppBar position='static' className={ classes.root }>
           <OuterContainer>
-            <IconButton
-              className={ classes.menuButton }
-              onClick={ this.setMenuAnchor }
-            >
-              <FaBars size='1.5rem' />
-            </IconButton>
+          
+            <MobileMenuContainer>
+              <IconButton
+                className={ classes.menuButton }
+                onClick={ this.setMenuAnchor }
+              >
+                <FaBars size='1.5rem' />
+              </IconButton>
             
-          <Menu
-            anchorEl={this.state.menuAnchor}
-            open={Boolean(this.state.menuAnchor)} // true / false
-            // onClick={this.removeMenuAnchor}
-          >
-            <MenuItem onClick={this.removeMenuAnchor}>Home</MenuItem>
-            <MenuItem
-              onClick={() => {
-              this.setState({
-                catalogCollapseIsOpen : !this.state.catalogCollapseIsOpen
-              });
-            }}>
-              <p>Browse Catalog</p>
-            </MenuItem>
-            <Collapse in={this.state.catalogCollapseIsOpen}>
-              <MenuItem>1</MenuItem>
-            </Collapse>
-            <MenuItem onClick={this.removeMenuAnchor}>Shopping Cart</MenuItem>
-            <MenuItem onClick={this.removeMenuAnchor}>Registry</MenuItem>
-            <MenuItem onClick={this.removeMenuAnchor}>Sign In</MenuItem>
-          </Menu>
-            
-            
+              <Menu
+                anchorEl={ this.state.menuAnchor }
+                open={ Boolean(this.state.menuAnchor) } // true / false
+                // onClick={this.removeMenuAnchor}
+                onBlur={ () => console.log(`=====blurred=====`) }
+              >
+                <MenuItem onClick={ this.removeMenuAnchor }>Home</MenuItem>
+                <MenuItem
+                  onClick={ () => {
+                    this.setState({
+                      catalogCollapseIsOpen : ! this.state.catalogCollapseIsOpen,
+                    });
+                  } }>
+                
+                  {/* Browse Submenu (L1) */ }
+                  <p>Browse Catalog</p>
+                </MenuItem>
+                <Collapse
+                  in={ this.state.catalogCollapseIsOpen }
+                  className={ classes.subMenu1 }
+                >
+                
+                  {/* Rocks Submenu (L2) */ }
+                  <MenuItem
+                    onClick={ () => {
+                      this.setState({
+                        rocksCollapseIsOpen : ! this.state.rocksCollapseIsOpen,
+                      });
+                    } }
+                  >Rocks</MenuItem>
+                  <Collapse
+                    in={ this.state.rocksCollapseIsOpen }
+                    className={ classes.subMenu1 }
+                  >
+                    <MenuItem>Pet Rocks</MenuItem>
+                    <MenuItem>Support Rocks</MenuItem>
+                  </Collapse>
+                
+                
+                  <MenuItem>Supplies (Inactive)</MenuItem>
+                </Collapse>
+                <MenuItem onClick={ this.removeMenuAnchor }>Shopping Cart</MenuItem>
+                <MenuItem onClick={ this.removeMenuAnchor }>Registry</MenuItem>
+                <MenuItem onClick={ this.removeMenuAnchor }>Sign In</MenuItem>
+              </Menu>
+            </MobileMenuContainer>
+          
+            <ExpandedMenuContainer>
+              <StyledMenuItem>Home</StyledMenuItem>
+              <StyledMenuButton>
+                Browse
+              </StyledMenuButton>
+              <StyledMenuItem>Shopping Cart</StyledMenuItem>
+              <StyledMenuItem>Registry</StyledMenuItem>
+              <StyledMenuItem>Sign In</StyledMenuItem>
+            </ExpandedMenuContainer>
+          
             <SearchInputContainer>
               <IconButton className={ [classes.menuButton, classes.searchButton].join(" ") }>
                 <FaSearch size='1.5rem' />
