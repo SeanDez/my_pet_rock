@@ -18,7 +18,8 @@ const styles = theme => ({
   root: {
     // flexGrow: 1,
     flexFlow : 'row wrap',
-    justifyContent : 'space-between'
+    justifyContent : 'space-between',
+    zIndex : 0
   },
   grow: {
     // flexGrow: 1,
@@ -65,15 +66,6 @@ const SearchInputContainer = styled.div`
   position : relative;
 `;
 
-const StyledSubMenuItem = styled(SubMenuItem)`
-  height: 24px;
-  boxSizing: content-box;
-  width: auto;
-  overflow: hidden;
-  whiteSpace: nowrap;
-  // &$selected: {}
-`;
-
 
 const MobileMenuContainer = styled.div`
   @media (min-width : 418px) {
@@ -88,24 +80,39 @@ const ExpandedMenuContainer = styled.div`
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-around;
-    border: 2px dashed wheat;
+    //border: 2px dashed wheat;
     min-width: 200px;
     margin: 0 5px;
+    z-index: 1150;
   }
 `;
 
 const StyledMenuButton = styled(MenuButton)`
   background-color: transparent;
-  //border: transparent;
-  border: 2px dashed lightgray;
+  border: transparent;
+  margin: 1px 7px 0 7px;
+  cursor: pointer;
+  //border: 2px dashed lightgray;
   color: white;
   font-size: 1rem;
   letter-spacing: .03rem;
   padding: 0;
+  z-index: 1150;
 `;
 
-const StyledMenuItem = styled.p`
-    margin: 0 5px;
+const StyledSubMenuItem = styled(SubMenuItem)`
+  z-index: 10;
+  font-size: 1rem;
+  color: rgba(10, 10, 10, .9);
+  position: relative;
+  padding: 13px 30px 13px 15px;
+  &:hover {
+    background-color: rgba(10, 10, 10, .08);
+  }
+`;
+
+const StyledNavText = styled.p`
+    margin: 0 7px;
 `;
 
 
@@ -172,7 +179,11 @@ class TopNav extends React.Component {
   
     return (
       <React.Fragment>
-        <AppBar position='static' className={ classes.root }>
+        <AppBar
+          position='static'
+          className={ classes.root }
+          // style={{ zIndex : 0 }} set in 'root'
+        >
           <OuterContainer>
           
             <MobileMenuContainer>
@@ -231,13 +242,33 @@ class TopNav extends React.Component {
             </MobileMenuContainer>
           
             <ExpandedMenuContainer>
-              <StyledMenuItem>Home</StyledMenuItem>
-              <StyledMenuButton>
+              <StyledNavText>Home</StyledNavText>
+              <StyledMenuButton
+                menu={
+                  <Dropdown style={{ zIndex : 1150 }}>
+                    <MenuList style={{ zIndex : 1150 }}>
+                      <StyledSubMenuItem
+                        style={{ zIndex : 1150 }}
+                        menu={
+                          <Dropdown>
+                            <MenuList>
+                              <MenuItem onClick={ this.removeMenuAnchor }>Pet Rocks</MenuItem>
+                              <MenuItem onClick={ this.removeMenuAnchor }>Support Rocks</MenuItem>
+                            </MenuList>
+                          </Dropdown>
+                        }
+                      >
+                        Rocks
+                      </StyledSubMenuItem>
+                    </MenuList>
+                  </Dropdown>
+                }
+              >
                 Browse
               </StyledMenuButton>
-              <StyledMenuItem>Shopping Cart</StyledMenuItem>
-              <StyledMenuItem>Registry</StyledMenuItem>
-              <StyledMenuItem>Sign In</StyledMenuItem>
+              <StyledNavText>Shopping Cart</StyledNavText>
+              <StyledNavText>Registry</StyledNavText>
+              <StyledNavText>Sign In</StyledNavText>
             </ExpandedMenuContainer>
           
             <SearchInputContainer>
