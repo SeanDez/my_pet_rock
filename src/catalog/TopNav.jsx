@@ -1,6 +1,7 @@
 import React from "react";
 import {FaBars, FaShoppingCart, FaSearch} from "react-icons/fa";
 import {MenuList, MenuButton, Dropdown, SubMenuItem} from "react-menu-list";
+import {Link} from "react-router-dom";
 
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
@@ -34,9 +35,11 @@ const styles = theme => ({
   },
   search : {
     // borderBottom : '1px solid darkblue',
+    border : '1px dashed green',
     fontStyle : 'italic',
     lineHeight : 0,
-    paddingLeft : '2vw',
+    paddingLeft : '10px',
+    paddingRight : '30px',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
@@ -116,6 +119,12 @@ const StyledNavText = styled.p`
 `;
 
 
+const InheritedStyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
+`;
+
+
 class TopNav extends React.Component {
   state = {
     catalogCollapseIsOpen : false,
@@ -171,9 +180,6 @@ class TopNav extends React.Component {
   
 
   
-  
-  
-  
   render() {
     const {classes} = this.props;
   
@@ -200,7 +206,9 @@ class TopNav extends React.Component {
                 // onClick={this.removeMenuAnchor}
                 onBlur={ () => console.log(`=====blurred=====`) }
               >
-                <MenuItem onClick={ this.removeMenuAnchor }>Home</MenuItem>
+                <InheritedStyledLink to='/'>
+                  <MenuItem onClick={ this.removeMenuAnchor }>Home</MenuItem>
+                </InheritedStyledLink>
                 <MenuItem
                   onClick={ () => {
                     this.setState({
@@ -228,32 +236,52 @@ class TopNav extends React.Component {
                     in={ this.state.rocksCollapseIsOpen }
                     className={ classes.subMenu1 }
                   >
-                    <MenuItem>Pet Rocks</MenuItem>
-                    <MenuItem>Support Rocks</MenuItem>
+                    <InheritedStyledLink to='/pet-rocks'>
+                      <MenuItem>Pet Rocks</MenuItem>
+                    </InheritedStyledLink>
+                    <InheritedStyledLink to='/support-rocks'>
+                      <MenuItem>Support Rocks</MenuItem>
+                    </InheritedStyledLink>
                   </Collapse>
                 
-                
-                  <MenuItem>Supplies (Inactive)</MenuItem>
+                  <InheritedStyledLink to='/supplies'>
+                    <MenuItem>Supplies (Inactive)</MenuItem>
+                  </InheritedStyledLink>
                 </Collapse>
-                <MenuItem onClick={ this.removeMenuAnchor }>Shopping Cart</MenuItem>
-                <MenuItem onClick={ this.removeMenuAnchor }>Registry</MenuItem>
-                <MenuItem onClick={ this.removeMenuAnchor }>Sign In</MenuItem>
+                <InheritedStyledLink to='cart'>
+                  <MenuItem onClick={ this.removeMenuAnchor }>Shopping Cart</MenuItem>
+                </InheritedStyledLink>
+                <InheritedStyledLink to='/registry'>
+                  <MenuItem onClick={ this.removeMenuAnchor }>Registry</MenuItem>
+                </InheritedStyledLink>
+                <InheritedStyledLink to='sign-in'>
+                  <MenuItem onClick={ this.removeMenuAnchor }>Sign In</MenuItem>
+                </InheritedStyledLink>
               </Menu>
             </MobileMenuContainer>
           
             <ExpandedMenuContainer>
-              <StyledNavText>Home</StyledNavText>
+              <InheritedStyledLink to='/'>
+                <StyledNavText>Home</StyledNavText>
+              </InheritedStyledLink>
+            
               <StyledMenuButton
                 menu={
-                  <Dropdown style={{ zIndex : 1150 }}>
-                    <MenuList style={{ zIndex : 1150 }}>
+                  <Dropdown style={ {zIndex : 1150} }>
+                    <MenuList style={ {zIndex : 1150} }>
                       <StyledSubMenuItem
-                        style={{ zIndex : 1150 }}
+                        style={ {zIndex : 1150} }
                         menu={
                           <Dropdown>
                             <MenuList>
-                              <MenuItem onClick={ this.removeMenuAnchor }>Pet Rocks</MenuItem>
-                              <MenuItem onClick={ this.removeMenuAnchor }>Support Rocks</MenuItem>
+                              <InheritedStyledLink to='/pet-rocks'>
+                                <MenuItem onClick={ this.removeMenuAnchor }>
+                                  Pet Rocks
+                                </MenuItem>
+                              </InheritedStyledLink>
+                              <InheritedStyledLink to='/support-rocks'>
+                                <MenuItem onClick={ this.removeMenuAnchor }>Support Rocks</MenuItem>
+                              </InheritedStyledLink>
                             </MenuList>
                           </Dropdown>
                         }
@@ -266,9 +294,15 @@ class TopNav extends React.Component {
               >
                 Browse
               </StyledMenuButton>
-              <StyledNavText>Shopping Cart</StyledNavText>
-              <StyledNavText>Registry</StyledNavText>
-              <StyledNavText>Sign In</StyledNavText>
+              <InheritedStyledLink to='/cart'>
+                <StyledNavText>Shopping Cart</StyledNavText>
+              </InheritedStyledLink>
+              <InheritedStyledLink to='/registry'>
+                <StyledNavText>Registry</StyledNavText>
+              </InheritedStyledLink>
+              <InheritedStyledLink to='/sign-in'>
+                <StyledNavText>Sign In</StyledNavText>
+              </InheritedStyledLink>
             </ExpandedMenuContainer>
           
             <SearchInputContainer>
@@ -278,6 +312,7 @@ class TopNav extends React.Component {
               <Input className={ classes.search } placeholder='product search'
               />
             </SearchInputContainer>
+          
             <IconButton className={ classes.menuButton }>
               <FaShoppingCart size='1.5rem' />
             </IconButton>
