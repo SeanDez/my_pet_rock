@@ -33,12 +33,6 @@ class ProductBodyView extends Component {
             catalogStyles={{ marginTop : '50px' }} />
           <CrossSellSection
             catalogStyles={{ marginTop : '20px' }} />
-          <FooterBenefitsSection
-            catalogStyles={{ marginTop : '20px' }} />
-          <FooterLinkSection
-            catalogStyles={{ marginTop : '60px' }} />
-          <FooterCopyright
-            style={ {border : "2px dashed red", marginTop : "10vh"} } />
       </React.Fragment>
     );
   }

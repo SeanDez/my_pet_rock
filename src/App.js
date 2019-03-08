@@ -9,8 +9,11 @@ import queryString from "query-string";
 import Header from "./common/header";
 import ProductBodyView from "./catalog/productBody/ProductBodyView";
 import TopNav from "./catalog/TopNav";
-import HomeViewSection from './catalog/HomeBodyView'
+import HomeViewSection from "./catalog/HomeBodyView";
 import CategorySection from './catalog/categoryBody/CategoryBodyView';
+import FooterBenefitsSection from "./common/FooterBenefitsSection";
+import FooterLinkSection from "./common/FooterLinkSection";
+import FooterCopyright from "./common/FooterCopyright";
 
 
 const history = createBrowserHistory();
@@ -86,6 +89,13 @@ class App extends Component {
               } }
             />
           </Switch>
+  
+          <FooterBenefitsSection
+            catalogStyles={{ marginTop : '20px' }} />
+          <FooterLinkSection
+            catalogStyles={{ marginTop : '60px' }} />
+          <FooterCopyright
+            style={ {border : "2px dashed red", marginTop : "10vh"} } />
         </AppContainer>
       </BrowserRouter>
     );
