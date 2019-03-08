@@ -9,7 +9,8 @@ import queryString from "query-string";
 import Header from "./common/header";
 import Catalog from "./catalog/catalog";
 import TopNav from "./catalog/TopNav";
-
+import HomeViewSection from './catalog/HomeBodyView'
+import CategorySection from './catalog/CategoryBodyView';
 
 
 const history = createBrowserHistory();
@@ -30,7 +31,9 @@ class App extends Component {
       console.log(action, location.pathname, location.state);
     });
     console.log(`=====history push=====`);
-    history.push('/test?testKey=testValue&2ndKey=2ndValue&3rdKey=3rdValue', { key : 'val'})
+    // history.push('/test?testKey=testValue&2ndKey=2ndValue&3rdKey=3rdValue', { key : 'val'})
+    // the above pushed the query string into the url after initial mount
+    
     console.log(history, `=====history=====`);
     const parsedQueryString = queryString.parse(history.location.search)
     console.log(parsedQueryString, `=====parsedQueryString=====`);
@@ -49,20 +52,39 @@ class App extends Component {
   
   
   render() {
+    console.log(this.props.history, `=====this.props.history=====`);
     return (
       <BrowserRouter>
         <AppContainer className="App">
           <Header />
           <TopNav />
-          <Catalog />
+          {/*<Catalog />*/ }
         
-          <Switch>
+        
+          <Switch> {/* Choose the view body */ }
             <Route
-              path='/'
-              render={ () => {
-                return (
-                  null
-                );
+              path='/' exact
+              render={ () => <HomeViewSection /> }
+            />
+          
+            <Route
+              path='/:sectionSlug/:productSlug'
+              render={ routeProps => {
+                console.log(routeProps, `=====routeProps=====`);
+                // render the catalog template only if sectionSlug matches a catalog category
+                const catalogCategories = ['rocks'];
+                if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
+                  return <Catalog />;
+                }
+              }
+              }
+            />
+          
+            <Route
+              path='/:categorySlug'
+              render={ routeProps => {
+                console.log(routeProps, `=====routeProps=====`);
+                return <CategorySection {...routeProps} />;
               } }
             />
           </Switch>
