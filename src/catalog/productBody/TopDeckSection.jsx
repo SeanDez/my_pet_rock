@@ -70,12 +70,12 @@ const DeckGridArea = styled.div`
 
 
 const images = [
-  require("./images/dragonglass_pendant.jpg"),
-  require("./images/dragonglass_pendant2.jpg"),
-  require("./images/dragonglass_pendant3.jpg"),
-  require("./images/dragonglass_pendant4.jpg"),
-  require("./images/dragonglass_pendant5.jpg"),
-  require("./images/dragonglass_pendant6.jpg"),
+  require("../images/dragonglass_pendant.jpg"),
+  require("../images/dragonglass_pendant2.jpg"),
+  require("../images/dragonglass_pendant3.jpg"),
+  require("../images/dragonglass_pendant4.jpg"),
+  require("../images/dragonglass_pendant5.jpg"),
+  require("../images/dragonglass_pendant6.jpg"),
 ];
 
 // brand, product, main image, featured images
@@ -103,7 +103,7 @@ export default props => {
   
         <ImageGridArea>
           <SelectedImageContainer style={ {marginTop : "4vh"} }>
-            <img src={ require("./images/dragonglass_pendant.jpg") } alt='dragonglass pendant'
+            <img src={ require("../images/dragonglass_pendant.jpg") } alt='dragonglass pendant'
                  style={ {
                    maxWidth  : "100%",
                    height    : "auto",

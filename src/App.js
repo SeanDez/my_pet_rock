@@ -7,10 +7,10 @@ import queryString from "query-string";
 
 
 import Header from "./common/header";
-import Catalog from "./catalog/catalog";
+import ProductBodyView from "./catalog/productBody/ProductBodyView";
 import TopNav from "./catalog/TopNav";
 import HomeViewSection from './catalog/HomeBodyView'
-import CategorySection from './catalog/CategoryBodyView';
+import CategorySection from './catalog/categoryBody/CategoryBodyView';
 
 
 const history = createBrowserHistory();
@@ -58,8 +58,6 @@ class App extends Component {
         <AppContainer className="App">
           <Header />
           <TopNav />
-          {/*<Catalog />*/ }
-        
         
           <Switch> {/* Choose the view body */ }
             <Route
@@ -74,7 +72,7 @@ class App extends Component {
                 // render the catalog template only if sectionSlug matches a catalog category
                 const catalogCategories = ['rocks'];
                 if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
-                  return <Catalog />;
+                  return <ProductBodyView />;
                 }
               }
               }

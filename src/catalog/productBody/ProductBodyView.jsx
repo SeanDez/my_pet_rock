@@ -1,25 +1,23 @@
 import React, {Component} from 'react';
-import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 
-import BreadCrumbTrail from "./BreadCrumbTrail";
+import BreadCrumbTrail from "../BreadCrumbTrail";
 import TopDeck from "./TopDeckSection";
 import RegistrySection from "./RegistrySection";
 import ShippingSection from './ShippingSection';
 import FeatureSection from "./FeatureSection";
 import LongDescriptionSection from "./LongDescriptionSection";
 import CustomerReviewsSection from "./CustomerReviewsSection";
-import CrossSellSection from './CrossSellSection';
-import FooterBenefitsSection from "../common/FooterBenefitsSection";
-import FooterLinkSection from "../common/FooterLinkSection";
-import FooterCopyright from "../common/FooterCopyright";
+import CrossSellSection from '../CrossSellSection';
+import FooterBenefitsSection from "../../common/FooterBenefitsSection";
+import FooterLinkSection from "../../common/FooterLinkSection";
+import FooterCopyright from "../../common/FooterCopyright";
 
 
 
 
 
 
-class Catalog extends Component {
+class ProductBodyView extends Component {
   
   render() {
     return (
@@ -46,4 +44,4 @@ class Catalog extends Component {
   }
 }
 
-export default Catalog;
+export default ProductBodyView;
