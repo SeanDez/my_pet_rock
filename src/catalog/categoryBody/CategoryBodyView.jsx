@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 import CategoryHeader from "./CategoryHeader";
 import PrevNextSection from "./PrevNextSection";
+import ProductGridSection from './ProductGridSection'
 
 export default props => {
   const {match} = props;
@@ -19,6 +20,7 @@ export default props => {
       <PrevNextSection />
       
       {/* Product Grid */}
+      <ProductGridSection />
       
       {/* Another Pagination */}
   
