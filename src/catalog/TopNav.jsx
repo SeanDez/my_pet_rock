@@ -170,7 +170,7 @@ class TopNav extends React.Component {
   
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState !== this.state) {
-      console.log(this.state, `=====this.state=====`);
+      // console.log(this.state, `=====this.state=====`);
     }
   }
   
@@ -204,10 +204,13 @@ class TopNav extends React.Component {
                 anchorEl={ this.state.menuAnchor }
                 open={ Boolean(this.state.menuAnchor) } // true / false
                 // onClick={this.removeMenuAnchor}
-                onBlur={ () => console.log(`=====blurred=====`) }
               >
                 <InheritedStyledLink to='/'>
-                  <MenuItem onClick={ this.removeMenuAnchor }>Home</MenuItem>
+                  <MenuItem
+                    onClick={ this.removeMenuAnchor }
+                  >
+                    Home
+                  </MenuItem>
                 </InheritedStyledLink>
                 <MenuItem
                   onClick={ () => {

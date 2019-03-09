@@ -11,7 +11,7 @@ const OuterContainer = styled.div`
   box-sizing: border-box;
   width: 210px;
   min-height: 330px;
-  //border: 1px solid gray;
+  border: 1px solid transparent;
   &:hover {
     border: 1px solid gray;
   }
