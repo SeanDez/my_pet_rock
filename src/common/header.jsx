@@ -38,16 +38,16 @@ const SaleBox = styled.div`
 
 
 // logo, sale
-class Header extends Component {
+const Header = props => {
   
-  render() {
-    return (
-      <HeaderContainer>
-        <LogoBox />
-        <SaleBox />
-      </HeaderContainer>
-    )
-  }
-}
+  
+  return (
+    <HeaderContainer>
+      <LogoBox />
+      <SaleBox />
+    </HeaderContainer>
+  );
+};
+
 
 export default Header;

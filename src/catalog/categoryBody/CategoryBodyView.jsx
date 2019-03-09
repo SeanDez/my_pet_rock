@@ -23,6 +23,7 @@ export default props => {
       <ProductGridSection />
       
       {/* Another Pagination */}
+      <PrevNextSection />
   
       <Link to={`${match.url}/dragonglassPendant`} >
         Link to a specific URL: the product page, passing the value dragonglassPendant to the route object in the :productSlug slot.

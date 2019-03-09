@@ -13,27 +13,24 @@ import CrossSellSection from '../CrossSellSection';
 
 
 
-
-
-class ProductBodyView extends Component {
+const ProductBodyView = props => {
   
-  render() {
-    return (
-      <React.Fragment>
-          <BreadCrumbTrail />
-          <TopDeck />
-          <RegistrySection />
-          <ShippingSection />
-          <FeatureSection
-            catalogStyles={{ marginTop : '20px' }}/>
-          <LongDescriptionSection />
-          <CustomerReviewsSection
-            catalogStyles={{ marginTop : '50px' }} />
-          <CrossSellSection
-            catalogStyles={{ marginTop : '20px' }} />
-      </React.Fragment>
-    );
-  }
-}
+  
+  return (
+    <React.Fragment>
+      <BreadCrumbTrail />
+      <TopDeck />
+      <RegistrySection />
+      <ShippingSection />
+      <FeatureSection
+        catalogStyles={ {marginTop : "20px"} } />
+      <LongDescriptionSection />
+      <CustomerReviewsSection
+        catalogStyles={ {marginTop : "50px"} } />
+      <CrossSellSection
+        catalogStyles={ {marginTop : "20px"} } />
+    </React.Fragment>
+  );
+};
 
 export default ProductBodyView;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect, useReducer } from 'react';
 import styled from "styled-components";
 import './App.css';
 import { BrowserRouter, Switch, Link, Route } from "react-router-dom";
@@ -26,80 +26,62 @@ const AppContainer = styled.div`
 `;
 
 
-class App extends Component {
+const App = props => {
   
-  componentDidMount() {
+  useEffect(() => {
     history.listen((location, action) => {
       // location is an object like window.location
       console.log(action, location.pathname, location.state);
     });
-    console.log(`=====history push=====`);
-    // history.push('/test?testKey=testValue&2ndKey=2ndValue&3rdKey=3rdValue', { key : 'val'})
-    // the above pushed the query string into the url after initial mount
     
-    console.log(history, `=====history=====`);
-    const parsedQueryString = queryString.parse(history.location.search)
+    const parsedQueryString = queryString.parse(history.location.search);
     console.log(parsedQueryString, `=====parsedQueryString=====`);
-  }
-  
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps !== this.props ||
-      prevState !== this.state
-    ) {
-      history.listen((location, action) => {
-        // location is an object like window.location
-        console.log(action, location.pathname, location.state);
-      });
-    }
-  }
+  });
   
   
-  render() {
-    console.log(this.props.history, `=====this.props.history=====`);
-    return (
-      <BrowserRouter>
-        <AppContainer className="App">
-          <Header />
-          <TopNav />
+  return (
+    <BrowserRouter>
+      <AppContainer className="App">
+        <Header />
+        <TopNav />
         
-          <Switch> {/* Choose the view body */ }
-            <Route
-              path='/' exact
-              render={ () => <HomeViewSection /> }
-            />
+        <Switch> {/* Choose the view body */ }
+          <Route
+            path='/' exact
+            render={ () => <HomeViewSection /> }
+          />
           
-            <Route
-              path='/:sectionSlug/:productSlug'
-              render={ routeProps => {
-                console.log(routeProps, `=====routeProps=====`);
-                // render the catalog template only if sectionSlug matches a catalog category
-                const catalogCategories = ['rocks'];
-                if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
-                  return <ProductBodyView />;
-                }
+          <Route
+            path='/:sectionSlug/:productSlug'
+            render={ routeProps => {
+              console.log(routeProps, `=====routeProps=====`);
+              // render the catalog template only if sectionSlug matches a catalog category
+              const catalogCategories = ["rocks"];
+              if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
+                return <ProductBodyView />;
               }
-              }
-            />
+            }
+            }
+          />
           
-            <Route
-              path='/:categorySlug'
-              render={ routeProps => {
-                console.log(routeProps, `=====routeProps=====`);
-                return <CategorySection {...routeProps} />;
-              } }
-            />
-          </Switch>
-  
-          <FooterBenefitsSection
-            catalogStyles={{ marginTop : '20px' }} />
-          <FooterLinkSection
-            catalogStyles={{ marginTop : '60px' }} />
-          <FooterCopyright
-            style={ {border : "2px dashed red", marginTop : "10vh"} } />
-        </AppContainer>
-      </BrowserRouter>
-    );
-  }
-}
+          <Route
+            path='/:categorySlug'
+            render={ routeProps => {
+              console.log(routeProps, `=====routeProps=====`);
+              return <CategorySection { ...routeProps } />;
+            } }
+          />
+        </Switch>
+        
+        <FooterBenefitsSection
+          catalogStyles={ {marginTop : "20px"} } />
+        <FooterLinkSection
+          catalogStyles={ {marginTop : "60px"} } />
+        <FooterCopyright
+          style={ {border : "2px dashed red", marginTop : "10vh"} } />
+      </AppContainer>
+    </BrowserRouter>
+  );
+};
 
 export default App;
