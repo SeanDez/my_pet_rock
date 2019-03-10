@@ -26,6 +26,40 @@ export default [
     productOptions : [
       { label : 'Edition', selections : ['Standard', 'Premium'] },
       { label : 'Size', selections : ['Small', 'Medium', 'Large'] },
-    ]
+    ],
+    // sku, quantity, options, selection,
+    skus : [
+      {
+        sku : 3000, quantity : 13, options : {
+          Edition : "Standard",
+          Size    : "Small",
+        },
+      }, {
+        sku : 3001, quantity : 24, options : {
+          Edition : "Standard",
+          Size    : "Medium",
+        },
+      }, {
+        sku : 3002, quantity : 34, options : {
+          Edition : "Standard",
+          Size    : "Large",
+        },
+      }, {
+        sku : 3003, quantity : 3, options : {
+          Edition : "Premium",
+          Size    : "Small",
+        },
+      }, {
+        sku : 3004, Premium : 2, options : {
+          Edition : "Standard",
+          Size    : "Medium",
+        },
+      }, {
+        sku : 3005, Premium : 6, options : {
+          Edition : "Standard",
+          Size    : "Large",
+        },
+      },
+    ],
   }
 ]
