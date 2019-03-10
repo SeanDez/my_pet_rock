@@ -91,8 +91,8 @@ export default props => {
     <OuterContainer>
       <TopLayoutController>
         <DeckGridArea>
-          <BrandName>DragonStone Trading Company</BrandName>
-          <ProductName>Pure DragonGlass, forged from 100% Authentic Dragon Fire</ProductName>
+          <BrandName>{props.data.brandName}</BrandName>
+          <ProductName>{props.data.productName}</ProductName>
           <ShortDescription>
             Forged from the flames of 100% authentic dragon fire, this real pendant could enable your family to live a
             long, healthy life, or a mindless eternity in the army of the dead should it be misplaced.
@@ -102,7 +102,7 @@ export default props => {
             order before our stock runs out for good!
           </ShortDescription>
   
-          <ProductOptions />
+          <ProductOptions options={props.data.productOptions} />
           
           <JumboBuyButton
             variant="contained"

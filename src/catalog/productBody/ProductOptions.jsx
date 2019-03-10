@@ -77,18 +77,25 @@ export default props => {
   return (
     <div style={{ marginTop : '30px' }}>
       <h2 style={{ fontWeight : 400 }}>Options</h2>
-      <h3>Edition</h3>
-      <OptionContainer>
-        <EnhancedButton color='primary' variant='outlined'>Standard</EnhancedButton>
-        <EnhancedButton color='primary' variant='outlined'>Premium</EnhancedButton>
-      </OptionContainer>
       
-      <h3>Size</h3>
-      <OptionContainer>
-        <EnhancedButton color='primary' variant='outlined'>Small</EnhancedButton>
-        <EnhancedButton color='primary' variant='outlined'>Medium</EnhancedButton>
-        <EnhancedButton color='primary' variant='outlined'>Large</EnhancedButton>
-      </OptionContainer>
+      { // map out the labels
+        props.options.map((optionSet, index) => (
+          <React.Fragment key={index}>
+            <h3>{optionSet.label}</h3>
+            { // map out the selections
+              optionSet.selections.map((choice, index) => (
+                <EnhancedButton
+                  color='primary'
+                  variant='outlined'
+                  key={index}
+                >
+                  {choice}
+                </EnhancedButton>
+              ))
+            }
+          </React.Fragment>
+        ))
+      }
     </div>
   );
 }

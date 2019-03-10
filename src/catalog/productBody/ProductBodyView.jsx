@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 
 import BreadCrumbTrail from "../BreadCrumbTrail";
 import TopDeck from "./TopDeckSection";
@@ -12,18 +12,24 @@ import CrossSells from '../CrossSellSection';
 
 const ProductBodyView = props => {
   
+  useEffect(() => {
+    console.log(props.productData, `=====props.productData=====`);
+  });
   
   return (
     <React.Fragment>
       <BreadCrumbTrail />
       <TopDeck
         addToCart={props.addToCart}
+        data={props.productData}
       />
       <Registry />
       <Shipping />
       <Features
         catalogStyles={ {marginTop : "20px"} } />
-      <LongDescription />
+      <LongDescription
+        //data={props.dummyProductData.longDescription}
+      />
       <CustomerReviews
         catalogStyles={ {marginTop : "50px"} } />
       <CrossSells

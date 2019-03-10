@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect, useReducer } from 'react';
 import {connect} from "react-redux";
 import checkoutActions from './checkoutProcess/checkoutActions'
+import _ from "lodash";
 
 import styled from "styled-components";
 import './App.css';
@@ -18,6 +19,7 @@ import FooterBenefitsSection from "./common/FooterBenefitsSection";
 import FooterLinkSection from "./common/FooterLinkSection";
 import FooterCopyright from "./common/FooterCopyright";
 
+import dummyProductData from "./catalog/productBody/dummyProductData";
 
 const history = createBrowserHistory();
 const location = history.location;
@@ -45,6 +47,10 @@ const App = props => {
     console.log(props.cart, `=====props.cart=====`);
   });
   
+  const productSlug = useEffect(() => {
+    console.log(history, `=====history=====`);
+  });
+  
   return (
     <BrowserRouter>
       <AppContainer className="App">
@@ -61,12 +67,23 @@ const App = props => {
             path='/:sectionSlug/:productSlug'
             render={ routeProps => {
               console.log(routeProps, `=====routeProps=====`);
+
+              // capture the correct product data
+              // get the index and then use it in the prop assignment
+              const productIndex = dummyProductData.findIndex(item => item.productSlug ===
+              routeProps.match.params.productSlug); console.log(productIndex, `=====productIndex=====`);
+              
               // render the catalog template only if sectionSlug matches a catalog category
-              const catalogCategories = ["rocks"];
+              const catalogCategories = ["rocks", "pet-rocks"];
+              
               if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
-                return <ProductBodyView
-                  addToCart={props.addToCart}
-                />;
+                return (
+                  // <h1>Hi</h1>
+                  <ProductBodyView
+                    addToCart={props.addToCart}
+                    productData={dummyProductData[productIndex]}
+                  />
+                );
               }
             }
             }
