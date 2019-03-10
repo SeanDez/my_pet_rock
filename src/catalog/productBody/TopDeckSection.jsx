@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import ImageThumbnails from "./ImageThumbnails";
@@ -68,6 +68,7 @@ const DeckGridArea = styled.div`
   grid-area: deckSection;
 `;
 
+const [sku, quantity] = [2, 1];
 
 const images = [
   require("../images/dragonglass_pendant.jpg"),
@@ -80,6 +81,11 @@ const images = [
 
 // brand, product, main image, featured images
 export default props => {
+  
+  useEffect(() => {
+    
+    console.log(props.cart, `=====props.cart=====`);
+  });
   
   return (
     <OuterContainer>
@@ -98,7 +104,14 @@ export default props => {
   
           <ProductOptions />
           
-          <JumboBuyButton variant="contained" color='primary' style={ {marginTop : "3vh"} }>Add to Cart</JumboBuyButton>
+          <JumboBuyButton
+            variant="contained"
+            color='primary'
+            style={ {marginTop : "3vh"} }
+            onClick={() => props.addToCart({sku, quantity}) }
+          >
+            Add to Cart
+          </JumboBuyButton>
         </DeckGridArea>
   
         <ImageGridArea>

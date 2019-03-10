@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 
 import BreadCrumbTrail from "../BreadCrumbTrail";
 import TopDeck from "./TopDeckSection";
-import RegistrySection from "./RegistrySection";
-import ShippingSection from './ShippingSection';
-import FeatureSection from "./FeatureSection";
-import LongDescriptionSection from "./LongDescriptionSection";
-import CustomerReviewsSection from "./CustomerReviewsSection";
-import CrossSellSection from '../CrossSellSection';
-
-
-
+import Registry from "./RegistrySection";
+import Shipping from './ShippingSection';
+import Features from "./FeatureSection";
+import LongDescription from "./LongDescriptionSection";
+import CustomerReviews from "./CustomerReviewsSection";
+import CrossSells from '../CrossSellSection';
 
 
 const ProductBodyView = props => {
@@ -19,15 +16,17 @@ const ProductBodyView = props => {
   return (
     <React.Fragment>
       <BreadCrumbTrail />
-      <TopDeck />
-      <RegistrySection />
-      <ShippingSection />
-      <FeatureSection
+      <TopDeck
+        addToCart={props.addToCart}
+      />
+      <Registry />
+      <Shipping />
+      <Features
         catalogStyles={ {marginTop : "20px"} } />
-      <LongDescriptionSection />
-      <CustomerReviewsSection
+      <LongDescription />
+      <CustomerReviews
         catalogStyles={ {marginTop : "50px"} } />
-      <CrossSellSection
+      <CrossSells
         catalogStyles={ {marginTop : "20px"} } />
     </React.Fragment>
   );

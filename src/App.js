@@ -1,4 +1,7 @@
 import React, { Component, useState, useEffect, useReducer } from 'react';
+import {connect} from "react-redux";
+import checkoutActions from './checkoutProcess/checkoutActions'
+
 import styled from "styled-components";
 import './App.css';
 import { BrowserRouter, Switch, Link, Route } from "react-router-dom";
@@ -38,6 +41,9 @@ const App = props => {
     console.log(parsedQueryString, `=====parsedQueryString=====`);
   });
   
+  useEffect(() => {
+    console.log(props.cart, `=====props.cart=====`);
+  });
   
   return (
     <BrowserRouter>
@@ -58,7 +64,9 @@ const App = props => {
               // render the catalog template only if sectionSlug matches a catalog category
               const catalogCategories = ["rocks"];
               if (catalogCategories.indexOf(routeProps.match.params.sectionSlug) >= 0) {
-                return <ProductBodyView />;
+                return <ProductBodyView
+                  addToCart={props.addToCart}
+                />;
               }
             }
             }
@@ -84,4 +92,17 @@ const App = props => {
   );
 };
 
-export default App;
+const ConnectedApp = connect(
+  // map state to props
+  state => ({
+    // key a state name to a redux state key ( user : state.user )
+    cart : state.cart
+  }),
+  // map dispatch to props
+  dispatch => ({
+    addToCart : productInfo => dispatch(checkoutActions.addToCart(productInfo))
+  })
+)(App);
+
+
+export default ConnectedApp;

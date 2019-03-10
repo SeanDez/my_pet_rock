@@ -12,7 +12,9 @@ const OuterContainer = styled.div`
   justify-content: center;
 `;
 
-const dummyarray = [];
+const dummyarray = [
+  {slug : 'dragonglass_pendant', }
+];
 
 for (let i = 0; i < 5; i ++) {
   dummyarray.push(null);

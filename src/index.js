@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import ConnectedApp from './App';
 import * as serviceWorker from './serviceWorker';
 import {ThemeProvider} from "styled-components";
+import {Provider} from "react-redux";
 import commonTheme from "./common/theme";
+import store from "./common/rootReducer";
 
 ReactDOM.render(
+  <Provider store={store}>
   <ThemeProvider theme={ commonTheme }>
-    <App />
+    <ConnectedApp />
   </ThemeProvider>
+  </Provider>
   , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
