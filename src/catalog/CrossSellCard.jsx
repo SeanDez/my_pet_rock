@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 
-const mainImage = require('./images/placeholder-200x200.jpg');
+// const mainImage = require(`${process.env.PUBLIC_URL}/images/placeholder-200x200.jpg`);
+const mainImage = '/images/placeholder-200x200.jpg';
 const todayPrice = 39.99;
 const scratchedOutPrice = 100;
 
@@ -36,7 +37,7 @@ export default props => {
       { // replace with a real array of cross sells
         [null, null].map((nothing, index) => (
           <OuterContainer key={index}>
-            <img src={mainImage} style={{
+            <img src={`${process.env.PUBLIC_URL}${mainImage}`} style={{
               minWidth : '10vw',
               minHeight : 'auto',
               border : '2px solid blue',

@@ -2,7 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 
-const image200PxSquare = require("../images/placeholder-200x200.jpg");
+// const image200PxSquare = require(`${process.env.PUBLIC_URL}/images/placeholder-200x200.jpg`);
+const image200PxSquare = '/images/placeholder-200x200.jpg';
 
 const OuterContainer = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ export default props => {
   
   return (
     <OuterContainer style={props.productGridStyles}>
-      <ImageContained src={image200PxSquare} />
+      <ImageContained src={`${process.env.PUBLIC_URL}${image200PxSquare}`} />
       <ProductName>Product Name</ProductName>
       <PriceText>$30.00
         <ScratchedOutPriceText>$89.99</ScratchedOutPriceText>

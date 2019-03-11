@@ -1,9 +1,89 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import ImageThumbnails from "./ImageThumbnails";
 import Button from "@material-ui/core/Button";
 import ProductOptions from "./ProductOptions";
+
+
+export const searchForDefaultSku = productData => {
+  return productData.skus.filter(sku => sku.default)[0]
+  // need to specify [0] to extract from array
+};
+
+
+
+const [sku, quantity] = [2, 1];
+
+
+// brand, product, main image, featured images
+export default props => {
+  
+  const [selectedSku, setSelectedSku] = useState(null);
+  
+  useEffect(() => {
+    // if sku is null, look up the default sku
+    if (selectedSku === null) {
+      setSelectedSku(searchForDefaultSku(props.data))
+    }
+  });
+  
+  
+  return (
+    <OuterContainer>
+      <TopLayoutController>
+        <DeckGridArea>
+          <BrandName>{ props.data.brandName }</BrandName>
+          
+          {/* <img src={`${process.env.PUBLIC_URL}${box}`} /> */ }
+          
+          <ProductName>{ props.data.productName }</ProductName>
+          <ShortDescription>
+            Forged from the flames of 100% authentic dragon fire, this real pendant could enable your family to live a
+            long, healthy life, or a mindless eternity in the army of the dead should it be misplaced.
+          </ShortDescription>
+          <ShortDescription>
+            Imbued with special properties guaranteed to work against White Walkers and Giants. Very limited supply,
+            order before our stock runs out for good!
+          </ShortDescription>
+          
+          <ProductOptions options={ props.data.productOptions } />
+          
+          <JumboBuyButton
+            variant="contained"
+            color='primary'
+            style={ {marginTop : "3vh"} }
+            onClick={ () => props.addToCart({sku, quantity}) }
+          >
+            Add to Cart
+          </JumboBuyButton>
+        </DeckGridArea>
+        
+        <ImageGridArea>
+          { selectedSku ?
+            <>
+            <SelectedImageContainer style={ {marginTop : "4vh"} }>
+              <img
+                src={ `${ process.env.PUBLIC_URL }${ selectedSku.images[0] }` }
+                style={ {
+                  maxWidth  : "100%",
+                  maxHeight    : "320px",
+                  margin    : "0 auto",
+                  padding : '0 auto',
+                  objectFit : "contain",
+                } }
+              />
+            </SelectedImageContainer>
+            <ImageThumbnails images={selectedSku.images} />
+            </>
+            :
+            null
+          }
+        </ImageGridArea>
+      </TopLayoutController>
+    </OuterContainer>
+  );
+}
 
 
 const OuterContainer = styled.div`
@@ -62,71 +142,10 @@ const TopLayoutController = styled.div`
 
 const ImageGridArea = styled.div`
   grid-area: images;
+  //border : 2px dashed blue;
 `;
 
 const DeckGridArea = styled.div`
   grid-area: deckSection;
 `;
 
-const [sku, quantity] = [2, 1];
-
-const images = [
-  require("../images/dragonglass_pendant.jpg"),
-  require("../images/dragonglass_pendant2.jpg"),
-  require("../images/dragonglass_pendant3.jpg"),
-  require("../images/dragonglass_pendant4.jpg"),
-  require("../images/dragonglass_pendant5.jpg"),
-  require("../images/dragonglass_pendant6.jpg"),
-];
-
-// brand, product, main image, featured images
-export default props => {
-  
-  useEffect(() => {
-    
-    console.log(props.cart, `=====props.cart=====`);
-  });
-  
-  return (
-    <OuterContainer>
-      <TopLayoutController>
-        <DeckGridArea>
-          <BrandName>{props.data.brandName}</BrandName>
-          <ProductName>{props.data.productName}</ProductName>
-          <ShortDescription>
-            Forged from the flames of 100% authentic dragon fire, this real pendant could enable your family to live a
-            long, healthy life, or a mindless eternity in the army of the dead should it be misplaced.
-          </ShortDescription>
-          <ShortDescription>
-            Imbued with special properties guaranteed to work against White Walkers and Giants. Very limited supply,
-            order before our stock runs out for good!
-          </ShortDescription>
-  
-          <ProductOptions options={props.data.productOptions} />
-          
-          <JumboBuyButton
-            variant="contained"
-            color='primary'
-            style={ {marginTop : "3vh"} }
-            onClick={() => props.addToCart({sku, quantity}) }
-          >
-            Add to Cart
-          </JumboBuyButton>
-        </DeckGridArea>
-  
-        <ImageGridArea>
-          <SelectedImageContainer style={ {marginTop : "4vh"} }>
-            <img src={ require("../images/dragonglass_pendant.jpg") } alt='dragonglass pendant'
-                 style={ {
-                   maxWidth  : "100%",
-                   height    : "auto",
-                   margin    : "0 auto",
-                   objectFit : "contain",
-                 } } />
-          </SelectedImageContainer>
-          <ImageThumbnails images={ images } />
-        </ImageGridArea>
-      </TopLayoutController>
-    </OuterContainer>
-  );
-}
