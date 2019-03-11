@@ -63,15 +63,8 @@ export default props => {
           { selectedSku ?
             <>
             <SelectedImageContainer style={ {marginTop : "4vh"} }>
-              <img
+              <SelectedImage
                 src={ `${ process.env.PUBLIC_URL }${ selectedSku.images[0] }` }
-                style={ {
-                  maxWidth  : "100%",
-                  maxHeight    : "320px",
-                  margin    : "0 auto",
-                  padding : '0 auto',
-                  objectFit : "contain",
-                } }
               />
             </SelectedImageContainer>
             <ImageThumbnails images={selectedSku.images} />
@@ -115,6 +108,14 @@ const SelectedImageContainer = styled.div`
   //maxHeight: auto;
   border : 2px dotted deeppink;
 `;
+
+const SelectedImage = styled.img`
+  max-width  : 100%;
+  max-height    : 320px;
+  margin    : 0 auto;
+  padding : 0 auto;
+  object-fit : contain;
+`
 
 const JumboBuyButton = styled(Button)`
   //padding: 3vh 20vw !important;
