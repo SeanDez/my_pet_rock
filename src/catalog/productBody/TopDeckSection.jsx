@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import _ from "lodash";
 
 import ImageThumbnails from "./ImageThumbnails";
 import Button from "@material-ui/core/Button";
 import ProductOptions from "./ProductOptions";
-
 
 export const searchForDefaultSku = productData => {
   return productData.skus.filter(sku => sku.default)[0]
@@ -27,26 +27,36 @@ export default props => {
   // set the default sku
   useEffect(() => {
     if (selectedSku === null) {
-      console.log( `=====fired in selectedSku if=====`);
       setSelectedSku(searchForDefaultSku(props.data));
     }
   });
   
   
+  // set the default productOptions on mount
   useEffect(() => {
-    // set the default productOptions on mount
     if (productOptions === null && selectedSku) {
-      console.log( `=====fired in productOptions if=====`);
       setProductOptions({ ...selectedSku.options })
     }
+    console.log(productOptions, `=====productOptions=====`);
   }, [selectedSku, productOptions]);
   
   
+  // every time productOptions changes, derive a new selectedSku
+  // something about this code deletes the sku
+  useEffect(() => {
+    // find a matching sku.options
+    if (selectedSku !== null) {
+      const newSku = props.data.skus.filter(sku => {
+        return _.isEqual(sku.options, productOptions)
+      })[0];
+      setSelectedSku(newSku)
+    }
+  }, [productOptions]);
+  
   return (
     <OuterContainer>
-      { console.log(selectedSku, `=====selectedSku=====`) }
-      { console.log(productOptions, `=====productOptions=====`) }
       <TopLayoutController>
+        { console.log(selectedSku, `=====selectedSku=====`) }
         <DeckGridArea>
           <BrandName>{ props.data.brandName }</BrandName>
           
@@ -77,7 +87,7 @@ export default props => {
         </DeckGridArea>
         
         <ImageGridArea>
-          { selectedSku ?
+          { selectedSku && selectedSku.images ?
             <>
             <SelectedImageContainer style={ {marginTop : "4vh"} }>
               <SelectedImage
