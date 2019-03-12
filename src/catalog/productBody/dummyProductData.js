@@ -27,6 +27,7 @@ export default [
       { label : 'Edition', selections : ['Standard', 'Premium'] },
       { label : 'Size', selections : ['Small', 'Medium', 'Large'] },
     ],
+    customerReviews : null,
     // sku, quantity, options, selection,
     skus : [
       {

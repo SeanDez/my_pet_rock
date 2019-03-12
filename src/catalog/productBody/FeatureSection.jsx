@@ -11,9 +11,11 @@ export default props => {
     <div style={props.catalogStyles}>
       <h2 style={{ fontWeight : 400 }}>Features</h2>
       <ul>
-        <StyledLi>Metal outer covering and neckpiece</StyledLi>
-        <StyledLi>Quick pop-out withdrawal mechanism for emergency threats</StyledLi>
-        <StyledLi>Optional Premium package encludes golden accents</StyledLi>
+        { // features
+          props.data.map(featureText => (
+            <StyledLi>{featureText}</StyledLi>
+          ))
+        }
       </ul>
     </div>
   )

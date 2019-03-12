@@ -23,12 +23,18 @@ const ProductBodyView = props => {
       <Registry />
       <Shipping />
       <Features
-        catalogStyles={ {marginTop : "20px"} } />
+        catalogStyles={ {marginTop : "20px"} }
+        data={props.productData.features}
+      />
       <LongDescription
         data={props.productData.longDescription}
       />
       <CustomerReviews
-        catalogStyles={ {marginTop : "50px"} } />
+        catalogStyles={ {marginTop : "50px"} }
+        data={props.productData.customerReviews}
+      />
+      
+      // todo convert to dynamic
       <CrossSells
         catalogStyles={ {marginTop : "20px"} } />
     </React.Fragment>

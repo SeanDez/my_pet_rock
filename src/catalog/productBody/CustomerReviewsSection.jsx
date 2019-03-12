@@ -13,9 +13,17 @@ export default props => {
   
   return (
     <div>
-      <OuterContainer style={props.catalogStyles}>
+      <OuterContainer style={ props.catalogStyles }>
         <h3>Customer Reviews</h3>
-        <p>There aren't any yet. <a href='#'>Write the first!</a></p>
+        { // review text
+          props.data
+          ?
+          props.data.map(reviewText => (
+            <p>{ reviewText }</p>
+          ))
+          :
+          <p>There aren't any yet. <a href='#'>Write the first!</a></p>
+        }
       </OuterContainer>
     </div>
   );

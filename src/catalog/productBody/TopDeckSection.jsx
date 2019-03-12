@@ -35,8 +35,6 @@ export default props => {
         <DeckGridArea>
           <BrandName>{ props.data.brandName }</BrandName>
           
-          {/* <img src={`${process.env.PUBLIC_URL}${box}`} /> */ }
-          
           <ProductName>{ props.data.productName }</ProductName>
           
           { // short description
