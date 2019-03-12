@@ -46,9 +46,9 @@ export default props => {
   useEffect(() => {
     // find a matching sku.options
     if (selectedSku !== null) {
-      const newSku = props.data.skus.filter(sku => {
-        return _.isEqual(sku.options, productOptions)
-      })[0];
+      const newSku = props.data.skus.find(sku => {
+        return _.isEqual(sku.options, productOptions);
+      });
       setSelectedSku(newSku)
     }
   }, [productOptions]);
