@@ -12,9 +12,6 @@ import CrossSells from '../CrossSellSection';
 
 const ProductBodyView = props => {
   
-  useEffect(() => {
-    console.log(props.productData, `=====props.productData=====`);
-  });
   
   return (
     <React.Fragment>
@@ -28,7 +25,7 @@ const ProductBodyView = props => {
       <Features
         catalogStyles={ {marginTop : "20px"} } />
       <LongDescription
-        //data={props.dummyProductData.longDescription}
+        data={props.productData.longDescription}
       />
       <CustomerReviews
         catalogStyles={ {marginTop : "50px"} } />

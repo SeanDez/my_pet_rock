@@ -38,14 +38,14 @@ export default props => {
           {/* <img src={`${process.env.PUBLIC_URL}${box}`} /> */ }
           
           <ProductName>{ props.data.productName }</ProductName>
-          <ShortDescription>
-            Forged from the flames of 100% authentic dragon fire, this real pendant could enable your family to live a
-            long, healthy life, or a mindless eternity in the army of the dead should it be misplaced.
-          </ShortDescription>
-          <ShortDescription>
-            Imbued with special properties guaranteed to work against White Walkers and Giants. Very limited supply,
-            order before our stock runs out for good!
-          </ShortDescription>
+          
+          { // short description
+            props.data.shortDescription.map(paragraph => (
+              <ShortDescription>
+                {paragraph}
+              </ShortDescription>
+            ))
+          }
           
           <ProductOptions options={ props.data.productOptions } />
           
