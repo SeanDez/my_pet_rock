@@ -18,8 +18,8 @@ export default props => {
         { // review text
           props.data
           ?
-          props.data.map(reviewText => (
-            <p>{ reviewText }</p>
+          props.data.map((reviewText, index) => (
+            <p key={index}>{ reviewText }</p>
           ))
           :
           <p>There aren't any yet. <a href='#'>Write the first!</a></p>

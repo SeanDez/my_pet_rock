@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from "react";
 
 import BreadCrumbTrail from "../BreadCrumbTrail";
 import TopDeck from "./TopDeckSection";
@@ -11,7 +11,6 @@ import CrossSells from '../CrossSellSection';
 
 
 const ProductBodyView = props => {
-  
   
   return (
     <React.Fragment>

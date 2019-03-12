@@ -12,8 +12,8 @@ export default props => {
       <h2 style={{ fontWeight : 400 }}>Features</h2>
       <ul>
         { // features
-          props.data.map(featureText => (
-            <StyledLi>{featureText}</StyledLi>
+          props.data.map((featureText, index) => (
+            <StyledLi key={index}>{featureText}</StyledLi>
           ))
         }
       </ul>

@@ -18,19 +18,34 @@ const [sku, quantity] = [2, 1];
 
 // brand, product, main image, featured images
 export default props => {
-  
   const [selectedSku, setSelectedSku] = useState(null);
+  // set the sku on option changes
+  // local. on cart add it becomes global
+  const [productOptions, setProductOptions] = useState(null);
   
+  
+  // set the default sku
   useEffect(() => {
-    // if sku is null, look up the default sku
     if (selectedSku === null) {
-      setSelectedSku(searchForDefaultSku(props.data))
+      console.log( `=====fired in selectedSku if=====`);
+      setSelectedSku(searchForDefaultSku(props.data));
     }
   });
   
   
+  useEffect(() => {
+    // set the default productOptions on mount
+    if (productOptions === null && selectedSku) {
+      console.log( `=====fired in productOptions if=====`);
+      setProductOptions({ ...selectedSku.options })
+    }
+  }, [selectedSku, productOptions]);
+  
+  
   return (
     <OuterContainer>
+      { console.log(selectedSku, `=====selectedSku=====`) }
+      { console.log(productOptions, `=====productOptions=====`) }
       <TopLayoutController>
         <DeckGridArea>
           <BrandName>{ props.data.brandName }</BrandName>
@@ -38,14 +53,18 @@ export default props => {
           <ProductName>{ props.data.productName }</ProductName>
           
           { // short description
-            props.data.shortDescription.map(paragraph => (
-              <ShortDescription>
+            props.data.shortDescription.map((paragraph, index) => (
+              <ShortDescription key={index}>
                 {paragraph}
               </ShortDescription>
             ))
           }
           
-          <ProductOptions options={ props.data.productOptions } />
+          <ProductOptions
+            productOptionsState={productOptions}
+            options={ props.data.productOptions }
+            setProductOptions={setProductOptions}
+          />
           
           <JumboBuyButton
             variant="contained"

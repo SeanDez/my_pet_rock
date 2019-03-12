@@ -13,8 +13,8 @@ export default props => {
       <h2 style={{ fontWeight : 400 }}>Description</h2>
       
       { // long description paragraphs
-        props.data.map(paragraph => (
-          <StyledParagraph>
+        props.data.map((paragraph, index) => (
+          <StyledParagraph key={index}>
             {paragraph}
           </StyledParagraph>
         ))
