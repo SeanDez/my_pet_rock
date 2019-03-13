@@ -19,6 +19,7 @@ import CategorySection from './catalog/categoryBody/CategoryBodyView';
 import FooterBenefitsSection from "./common/FooterBenefitsSection";
 import FooterLinkSection from "./common/FooterLinkSection";
 import FooterCopyright from "./common/FooterCopyright";
+import Cart from "./checkoutProcess/CartBodyView";
 
 import dummyProductData from "./catalog/productBody/dummyProductData";
 
@@ -55,13 +56,25 @@ const App = props => {
   return (
     <BrowserRouter>
       <AppContainer className="App">
+        {/* SiteWide Header */}
         <Header />
         <TopNav />
-        
-        <Switch> {/* Choose the view body */ }
+  
+        {/* Choose the view body */ }
+        <Switch>
           <Route
             path='/' exact
             render={ () => <HomeViewSection /> }
+          />
+          
+          <Route
+            path='/cart'
+            render={routeProps => {
+              
+              return <Cart
+                cart={props.cart}
+              />
+            }}
           />
           
           <Route
@@ -99,6 +112,7 @@ const App = props => {
           />
         </Switch>
         
+        {/* Sitewide Footer */}
         <FooterBenefitsSection
           catalogStyles={ {marginTop : "20px"} } />
         <FooterLinkSection
