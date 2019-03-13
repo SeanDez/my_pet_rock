@@ -8,6 +8,7 @@ import Features from "./FeatureSection";
 import LongDescription from "./LongDescriptionSection";
 import CustomerReviews from "./CustomerReviewsSection";
 import CrossSells from '../CrossSellSection';
+// import store from "../../common/rootReducer";
 
 
 const ProductBodyView = props => {
@@ -15,9 +16,13 @@ const ProductBodyView = props => {
   return (
     <React.Fragment>
       <BreadCrumbTrail />
+    
+
+      
       <TopDeck
         addToCart={props.addToCart}
         data={props.productData}
+        cart={props.cart}
       />
       <Registry />
       <Shipping />

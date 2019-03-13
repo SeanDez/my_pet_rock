@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect, useReducer } from 'react';
 import {connect} from "react-redux";
 import checkoutActions from './checkoutProcess/checkoutActions'
 import _ from "lodash";
+import store from "./common/rootReducer";
 
 import styled from "styled-components";
 import './App.css';
@@ -66,12 +67,12 @@ const App = props => {
           <Route
             path='/:sectionSlug/:productSlug'
             render={ routeProps => {
-              console.log(routeProps, `=====routeProps=====`);
 
               // capture the correct product data
               // get the index and then use it in the prop assignment
               const productIndex = dummyProductData.findIndex(item => item.productSlug ===
-              routeProps.match.params.productSlug); console.log(productIndex, `=====productIndex=====`);
+              routeProps.match.params.productSlug);
+              
               
               // render the catalog template only if sectionSlug matches a catalog category
               const catalogCategories = ["rocks", "pet-rocks"];
@@ -82,6 +83,7 @@ const App = props => {
                   <ProductBodyView
                     addToCart={props.addToCart}
                     productData={dummyProductData[productIndex]}
+                    cart={props.cart}
                   />
                 );
               }
@@ -92,7 +94,6 @@ const App = props => {
           <Route
             path='/:categorySlug'
             render={ routeProps => {
-              console.log(routeProps, `=====routeProps=====`);
               return <CategorySection { ...routeProps } />;
             } }
           />
@@ -113,7 +114,7 @@ const ConnectedApp = connect(
   // map state to props
   state => ({
     // key a state name to a redux state key ( user : state.user )
-    cart : state.cart
+    cart : state.checkoutProcess.cart
   }),
   // map dispatch to props
   dispatch => ({

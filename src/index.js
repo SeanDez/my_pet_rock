@@ -9,11 +9,11 @@ import commonTheme from "./common/theme";
 import store from "./common/rootReducer";
 
 ReactDOM.render(
-  <Provider store={store}>
   <ThemeProvider theme={ commonTheme }>
-    <ConnectedApp />
+    <Provider store={ store }>
+      <ConnectedApp />
+    </Provider>
   </ThemeProvider>
-  </Provider>
   , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change

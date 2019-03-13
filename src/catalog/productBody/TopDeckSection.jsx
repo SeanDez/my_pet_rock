@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import _ from "lodash";
+// import store from "../../common/rootReducer";
 
 import ImageThumbnails from "./ImageThumbnails";
 import Button from "@material-ui/core/Button";
@@ -12,8 +13,6 @@ export const searchForDefaultSku = productData => {
 };
 
 
-
-const [sku, quantity] = [2, 1];
 
 
 // brand, product, main image, featured images
@@ -37,7 +36,6 @@ export default props => {
     if (productOptions === null && selectedSku) {
       setProductOptions({ ...selectedSku.options })
     }
-    console.log(productOptions, `=====productOptions=====`);
   }, [selectedSku, productOptions]);
   
   
@@ -56,7 +54,6 @@ export default props => {
   return (
     <OuterContainer>
       <TopLayoutController>
-        { console.log(selectedSku, `=====selectedSku=====`) }
         <DeckGridArea>
           <BrandName>{ props.data.brandName }</BrandName>
           
@@ -80,10 +77,15 @@ export default props => {
             variant="contained"
             color='primary'
             style={ {marginTop : "3vh"} }
-            onClick={ () => props.addToCart({sku, quantity}) }
+            onClick={ () => {
+              props.addToCart({sku : selectedSku.sku, quantity : 1 });
+            } }
           >
             Add to Cart
           </JumboBuyButton>
+          
+          
+          
         </DeckGridArea>
         
         <ImageGridArea>

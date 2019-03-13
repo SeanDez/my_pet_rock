@@ -19,6 +19,7 @@ const checkoutReducer = (previousState = startingState, action) => {
           cart : previousState.cart[indexOfCurrentSku].quantity += action.payload.quantity,
         };
       } else {
+        
         return {
           ...previousState,
           // cart : previousState.cart += previousState.cart.push(action.payload) // returns [Object Object 1]
